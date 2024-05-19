@@ -1,5 +1,6 @@
-messi_vs_ronaldo_streamlit_app_env
+messi_vs_ronaldo_streamlit_env
 .env
 *.csv
 .DS_Store
 __pycache__
+.streamlit/

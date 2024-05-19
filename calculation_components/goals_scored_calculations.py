@@ -1,18 +1,17 @@
 import pandas as pd
 
-from configuration_vars.configuration import Config
 from database_components.sql_to_df import SQLToDataframe
 from sql_queries.sql_data_queries import SQLQueries
-from streamlit_components.echart_graphs.echart_options import EChartGoalsScoredOptionCreation
+from echart_graphs.echart_options import EChartGoalsScoredOptionCreation
 
 class GoalsScoredAnalytics:
-    def __init__(self):
-        self.sql_queries=SQLQueries(table_name=Config.MYSQL_TABLE_NAME)
-        self.sql_to_dataframe=SQLToDataframe(mysql_username=Config.MYSQL_USERNAME, 
-                                        mysql_password=Config.MYSQL_PASSWORD, 
-                                        mysql_host=Config.MYSQL_HOST, 
-                                        mysql_port=Config.MYSQL_PORT, 
-                                        mysql_db_name=Config.MYSQL_DB_NAME)
+    def __init__(self, mysql_table_name, mysql_username, mysql_password, mysql_host, mysql_port, mysql_db_name):
+        self.sql_queries=SQLQueries(table_name=mysql_table_name)
+        self.sql_to_dataframe=SQLToDataframe(mysql_username=mysql_username, 
+                                             mysql_password=mysql_password, 
+                                             mysql_host=mysql_host, 
+                                             mysql_port=mysql_port, 
+                                             mysql_db_name=mysql_db_name)
         self.echart_goals_scored_option_creation=EChartGoalsScoredOptionCreation()
 
         goals_scored_sql_query=self.sql_queries.goals_scored_page_query()

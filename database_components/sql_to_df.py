@@ -11,7 +11,7 @@ class SQLToDataframe:
         self.mysql_db_name=mysql_db_name
 
         database_mysql_engine=DatabaseMYSQLEngine()
-        self.mysql_eninge=database_mysql_engine.create_mysql_engine(mysql_username=self.mysql_username, 
+        self.mysql_engine=database_mysql_engine.create_mysql_engine(mysql_username=self.mysql_username, 
                                                                     mysql_password=self.mysql_password, 
                                                                     mysql_host=self.mysql_host, 
                                                                     mysql_port=self.mysql_port, 
@@ -21,11 +21,11 @@ class SQLToDataframe:
     def execute_sql_to_df(self, sql_query, date_column=None):
         if date_column is None:
             df=pd.read_sql(sql_query, 
-                        con=self.mysql_eninge)
+                           con=self.mysql_engine)
             
         elif date_column is not None:
             df=pd.read_sql(sql_query, 
-                           con=self.mysql_eninge,
+                           con=self.mysql_engine,
                            parse_dates={f"{date_column}": "%Y-%m-%d"})
 
         return df

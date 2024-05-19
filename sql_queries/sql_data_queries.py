@@ -11,8 +11,7 @@ class SQLQueries:
                                                 competition,
                                                 result,
                                                 player_name
-                                         FROM {self.table_name}
-                                     '''
+                                         FROM {self.table_name}'''
         
         return goals_scored_page_query_text
     
