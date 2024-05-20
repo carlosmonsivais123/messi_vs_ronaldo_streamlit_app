@@ -2,8 +2,7 @@ class GeneralComponents:
     def competition_type_dictionary_argcontains(self, item):
         competition_type_dict={"World Cup": ["World Cup"],
                                "League": ["Primeira Liga", "Premier League", "La Liga", "Serie A", "Pro League", "MLS", "Ligue 1"],
-                               "Champions League": ["Champions Lg"],
-                               "Europa League": ["UEFA Cup", "Europa Lg"],
+                               "Champions Lg & Europa Lg": ["Champions Lg", "UEFA Cup", "Europa Lg"],
                                "League Cups": ["Coupe de France", "Coppa Italia", "Copa del Rey", "Super Cup", "FA Cup", 
                                                "Trophée des Champions", "Supercopa de España", "Supercoppa"],
                                "Friendlies": ["Friendlies (M)"],

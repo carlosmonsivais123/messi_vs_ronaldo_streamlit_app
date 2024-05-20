@@ -30,14 +30,17 @@ metric_col1, metric_col2, metric_col3, metric_col4=st.columns(4)
 goals_scored_metrics=goals_scored_analytics.goals_scored_metric_value(df=filtered_goals_scored_df)
 goals_per_game_metric=goals_scored_analytics.goals_ratio_metric_value(df=filtered_goals_scored_df)
 with metric_col1:
-    st.metric(label="Lionel Messi Goals Scored", value=goals_scored_metrics["Lionel Messi"])
+    st.metric(label="Lionel Messi Goals Scored", 
+              value=goals_scored_metrics["Lionel Messi"])
 with metric_col2:
-    st.metric(label="Lionel Messi Goals Per Game", value=goals_per_game_metric["Lionel Messi"])
+    st.metric(label="Lionel Messi Goals Per Game", 
+              value=goals_per_game_metric["Lionel Messi"])
 with metric_col3:
-    st.metric(label="Cristiano Ronaldo Goals Scored", value=goals_scored_metrics["Cristiano Ronaldo"])
+    st.metric(label="Cristiano Ronaldo Goals Scored", 
+              value=goals_scored_metrics["Cristiano Ronaldo"])
 with metric_col4:
-    st.metric(label="Cristiano Ronaldo Goals Per Game", value=goals_per_game_metric["Cristiano Ronaldo"])
-
+    st.metric(label="Cristiano Ronaldo Goals Per Game", 
+              value=goals_per_game_metric["Cristiano Ronaldo"])
 
 graph_col1, graph_col2=st.columns(2)
 cummulative_goals_graph_options=goals_scored_analytics.cummulative_goals_scored(df=filtered_goals_scored_df)

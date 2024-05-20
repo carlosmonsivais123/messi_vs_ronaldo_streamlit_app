@@ -41,3 +41,16 @@ class SQLQueries:
                                          {squad_filter_text}'''
         
         return goals_scored_page_query_text
+    
+
+    def consistency_page_query(self):
+        consistenct_page_query_text=f'''SELECT DATE(date) AS date,
+                                               squad,
+                                               (COALESCE(goals, 0) + COALESCE(assists, 0)) AS total_contributions,
+                                               COALESCE(minutes, 0) AS minutes,
+                                               competition,
+                                               result,
+                                               player_name
+                                        FROM {self.table_name}'''
+        
+        return consistenct_page_query_text
