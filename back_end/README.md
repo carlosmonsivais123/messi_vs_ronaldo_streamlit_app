@@ -22,7 +22,7 @@ MYSQL_TABLE_NAME="output_table_name"
 PLAYER_1="Cristiano Ronaldo"
 PLAYER_2="Lionel Messi"
 ```
-5. Execute the main file with the following command: python3 main.py
+5. Execute the main file with the following command: `python3 main.py`
 
 ### Execution Process
 ![back_end_data_flow](assets/images/back_end_data_flow.png)
