@@ -1,3 +1,20 @@
 # Messi vs Ronaldo Project
 ## By: Carlos Monsivais
-This is a WIP, the back end portion is complete, working on the front end portion.
+
+### Progress
+- [x] Back End
+- [] Front End
+- [] Deployment
+
+
+### Summary
+
+
+### Link to Dashboard
+WIP
+
+
+### Steps to Run
+
+
+### Execution Process

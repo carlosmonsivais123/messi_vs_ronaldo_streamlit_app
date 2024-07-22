@@ -69,17 +69,17 @@ class SQLQueries:
 
         combined_filter_string=messi_squad_filter_text+ronaldo_squad_filter_text+competition_type_filter_string+date_filter_string
         filtered_df_query_builder=f'''SELECT DATE(date) AS date,
-                                        squad,
-                                        COALESCE(goals, 0) AS goals,
-                                        COALESCE(assists, 0) AS assists,
-                                        competition_type,
-                                        total_contributions,
-                                        game_played,
-                                        minutes,
-                                        result,
-                                        player_name
-                                    FROM {self.mysql_table_name}
-                                    {combined_filter_string}'''
+                                             squad,
+                                             COALESCE(goals, 0) AS goals,
+                                             COALESCE(assists, 0) AS assists,
+                                             competition_type,
+                                             total_contributions,
+                                             game_played,
+                                             minutes,
+                                             result,
+                                             player_name
+                                      FROM {self.mysql_table_name}
+                                      {combined_filter_string}'''
         
         filtered_df=self.general_components.execute_sql_to_df(sql_query=filtered_df_query_builder,
                                                               date_column="date")
