@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_echarts import st_echarts
 
-from calculation_components.goals_scored_calculations import GoalsScoredAnalytics
+from calculation_components.goals_page_calculations import GoalsScoredAnalytics
 from general_components.sidebar_values import SidebarFilterValues
 from general_components.sql_data_queries import SQLQueries
 

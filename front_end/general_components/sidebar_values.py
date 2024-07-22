@@ -6,7 +6,6 @@ class SidebarFilterValues:
     def __init__(self):
         self.sql_queries=SQLQueries()
         self.general_components=GeneralComponents()
-
         self.players=["Lionel Messi", "Cristiano Ronaldo"]
 
 
@@ -26,4 +25,3 @@ class SidebarFilterValues:
         general_competition_type_values=general_competition_type_df["competition_type"].unique().tolist()
 
         return general_competition_type_values
-

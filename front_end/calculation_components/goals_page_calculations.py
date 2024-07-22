@@ -1,16 +1,11 @@
 import pandas as pd
 
-from general_components.sql_data_queries import SQLQueries
 from echart_graphs.echart_options import EChartGoalsScoredOptionsCreation
-from general_components.components import GeneralComponents
 
 
 class GoalsScoredAnalytics:
     def __init__(self):
-        self.sql_queries=SQLQueries()
-        self.general_components=GeneralComponents()
         self.echart_goals_scored_options_creation=EChartGoalsScoredOptionsCreation()
-          
         self.players=["Lionel Messi", "Cristiano Ronaldo"]
 
 

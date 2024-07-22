@@ -1,15 +1,11 @@
 import pandas as pd
 
-from general_components.sql_data_queries import SQLQueries
 from echart_graphs.echart_options import EChartConsistencyOptionsCreation
-from general_components.components import GeneralComponents
 
 
 class ConsistencyAnalytics:
-    def __init__(self):  
-        self.sql_queries=SQLQueries()
+    def __init__(self):
         self.echart_consistency_options_creation=EChartConsistencyOptionsCreation()
-        self.general_components=GeneralComponents()
 
 
     def number_of_contributions(self, df):

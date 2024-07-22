@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_echarts import st_echarts
 
-from calculation_components.consistency_calculations import ConsistencyAnalytics
+from calculation_components.consistency_page_calculations import ConsistencyAnalytics
 from general_components.sidebar_values import SidebarFilterValues
 from general_components.sql_data_queries import SQLQueries
 
@@ -9,6 +9,7 @@ sql_queries=SQLQueries()
 consistency_analytics=ConsistencyAnalytics()
 sidebar_filter_values=SidebarFilterValues()
 
+# Page Title and Layout
 st.set_page_config(page_title="Consistency", layout="wide")
 st.markdown("<h1 style='text-align: center;'>Consistency</h1>", unsafe_allow_html=True)
 

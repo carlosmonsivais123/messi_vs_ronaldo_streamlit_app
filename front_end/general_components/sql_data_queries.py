@@ -6,7 +6,6 @@ from general_components.components import GeneralComponents
 class SQLQueries:
     def __init__(self):
         self.mysql_table_name=st.secrets["mysql_db_credentials"]["MYSQL_TABLE_NAME"]
-
         self.general_components=GeneralComponents()
 
 
@@ -75,7 +74,9 @@ class SQLQueries:
                                              competition_type,
                                              total_contributions,
                                              game_played,
-                                             minutes,
+                                             COALESCE(minutes, 0) AS minutes,
+                                             round,
+                                             venue,
                                              result,
                                              player_name
                                       FROM {self.mysql_table_name}
