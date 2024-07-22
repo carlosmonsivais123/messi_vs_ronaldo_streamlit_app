@@ -1,55 +1,15 @@
 import pandas as pd
-import numpy as np
 
-from database_components.sql_to_df import SQLToDataframe
-from sql_queries.sql_data_queries import SQLQueries
+from general_components.sql_data_queries import SQLQueries
 from echart_graphs.echart_options import EChartConsistencyOptionsCreation
 from general_components.components import GeneralComponents
 
+
 class ConsistencyAnalytics:
-    def __init__(self, mysql_table_name, mysql_username, mysql_password, mysql_host, mysql_port, mysql_db_name):  
-        self.sql_queries=SQLQueries(table_name=mysql_table_name)
-        self.sql_to_dataframe=SQLToDataframe(mysql_username=mysql_username, 
-                                             mysql_password=mysql_password, 
-                                             mysql_host=mysql_host, 
-                                             mysql_port=mysql_port, 
-                                             mysql_db_name=mysql_db_name)
+    def __init__(self):  
+        self.sql_queries=SQLQueries()
         self.echart_consistency_options_creation=EChartConsistencyOptionsCreation()
         self.general_components=GeneralComponents()
-
-
-    def consistency_data_df(self):
-        # consistency_page_sql_query=self.sql_queries.consistency_page_query()
-
-        consistency_page_sql_query=self.sql_queries.filtered_df_query()
-
-        consistency_df=self.sql_to_dataframe.execute_sql_to_df(sql_query=consistency_page_sql_query,
-                                                               date_column="date")
-        
-        competition_type_function=self.general_components.competition_type_dictionary_argcontains
-        consistency_df["competition_type"]=consistency_df["competition"].map(competition_type_function)
-
-        consistency_df['game_played']=np.where(consistency_df["minutes"] > 0, "Played", "Not Played")
-        
-        return consistency_df
-
-
-    # def competition_type_filter(self, df):
-    #     competition_type_values=df["competition_type"].unique().tolist()
-    #     competition_type_values=list(set(competition_type_values))
-
-    #     return competition_type_values
-    
-
-    def consistency_data_df_filtered(self, df, competition_type_filters):
-        if len(competition_type_filters) > 0:
-            df=df[df["competition_type"].isin(competition_type_filters)]
-            df=df.reset_index(drop=True, inplace=False)
-
-        elif len(competition_type_filters) > 0:
-            pass
-
-        return df
 
 
     def number_of_contributions(self, df):
@@ -124,9 +84,7 @@ class ConsistencyAnalytics:
         match_availability_per_year_df["proportion"]=round(match_availability_per_year_df["proportion"]*100, 2)
         match_availability_per_year_df=match_availability_per_year_df.rename(columns={"proportion": "Ratio"})
         match_availability_per_year_df=match_availability_per_year_df.drop(columns=["game_played"])
-
         match_availability_per_year_df["date"]=match_availability_per_year_df["date"].dt.strftime(date_format="%Y-%m-%d")
-
         match_availability_per_year_dict=match_availability_per_year_df.to_dict("records")
 
         ratio_of_games_played_per_year_options=self.echart_consistency_options_creation.game_availability_per_year_bar_chart(source_data=match_availability_per_year_dict)

@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine
 
+
 class GeneralComponents:
     def __init__(self):
         self.mysql_username=st.secrets["mysql_db_credentials"]["MYSQL_USERNAME"]

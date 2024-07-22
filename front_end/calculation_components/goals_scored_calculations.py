@@ -1,8 +1,9 @@
 import pandas as pd
 
-from sql_queries.sql_data_queries import SQLQueries
+from general_components.sql_data_queries import SQLQueries
 from echart_graphs.echart_options import EChartGoalsScoredOptionsCreation
 from general_components.components import GeneralComponents
+
 
 class GoalsScoredAnalytics:
     def __init__(self):
@@ -11,26 +12,6 @@ class GoalsScoredAnalytics:
         self.echart_goals_scored_options_creation=EChartGoalsScoredOptionsCreation()
           
         self.players=["Lionel Messi", "Cristiano Ronaldo"]
-
-
-    def filtered_df_test(self, messi_teams_filter, ronaldo_teams_filter, general_competition_filter, start_date, end_date):
-        test_df=self.sql_queries.filtered_df(messi_teams_filter, 
-                                             ronaldo_teams_filter, 
-                                             general_competition_filter, 
-                                             start_date, 
-                                             end_date)
-
-
-    def filtered_goals_scored_df(self, messi_team_options, ronaldo_team_options):
-        goals_scored_sql_query=self.sql_queries.goals_scored_page_query(filter_1=messi_team_options, 
-                                                                        filter_2=ronaldo_team_options)
-        
-
-
-        filtered_goals_scored_df=self.general_components.execute_sql_to_df(sql_query=goals_scored_sql_query,
-                                                                           date_column="date")
-
-        return filtered_goals_scored_df
 
 
     def goals_scored_metric_value(self, df):

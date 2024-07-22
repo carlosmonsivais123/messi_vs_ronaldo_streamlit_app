@@ -126,6 +126,12 @@ class CleanData:
         df['minutes']=df['minutes'].astype(float)
         df['game_played']=np.where(df["minutes"] > 0, "Played", "Not Played")
 
+        df['goals']=df['goals'].fillna(0)
+        df['goals']=df['goals'].astype(float)
+        df['assists']=df['assists'].fillna(0)
+        df['assists']=df['assists'].astype(float)
+        df['total_contributions']=df['goals']+df['assists']
+
         pst_timezone=pytz.timezone('America/Los_Angeles')
         current_datetime=datetime.now(pst_timezone)
         current_date_time_str=current_datetime.strftime("%Y-%m-%d %H:%M:%S")

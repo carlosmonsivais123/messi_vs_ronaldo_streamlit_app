@@ -82,7 +82,8 @@ class DatabaseComponents:
                     'player_name': String(50),
                     'competition_type': String(50),
                     'game_played': String(15),
-                    'last_data_extract': String(30)}
+                    'last_data_extract': String(30),
+                    'total_contributions': Integer()}
 
         df.to_sql(name=output_table_name, 
                   con=mysql_db_engine,
