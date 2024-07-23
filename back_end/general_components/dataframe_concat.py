@@ -17,7 +17,7 @@ class CombineFinalDataframes:
         for value in player_data_dictionary.values():
             final_df=pd.concat([final_df, value])
 
-        final_df=final_df.drop_duplicates()
+        final_df=final_df.drop_duplicates(subset=['player_name', 'date'], inplace=False)
         final_df=final_df.reset_index(drop=True, inplace=False)
 
         return final_df

@@ -39,8 +39,8 @@ tile_height=110
 row1, row2=st.columns(2)
 tile1=row1.container(height=tile_height)
 tile2=row2.container(height=tile_height)
-tile1.title("Lionel Messi")
-tile2.title("Cristiano Ronaldo")
+tile1.header("Lionel Messi")
+tile2.header("Cristiano Ronaldo")
 
 row3, row4, row5, row6=st.columns(4)
 tile3=row3.container(height=tile_height)

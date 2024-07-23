@@ -33,32 +33,29 @@ consistency_df_filtered=sql_queries.filtered_sql_query_builder(messi_teams_filte
                                                       end_date=end_date)
 
 # Page Graph Outputs
-metric_col1, metric_col2, metric_col3=st.columns(3)
+tile_height=110
+
 total_contributions_per_player=consistency_analytics.number_of_contributions(df=consistency_df_filtered)
 contributions_per_player_ratio=consistency_analytics.contributions_per_game_ratio(df=consistency_df_filtered)
 availability_per_player_ratio=consistency_analytics.match_availability_ratio(df=consistency_df_filtered)
-with metric_col1:
-    st.metric(label="Lionel Messi Contributions", 
-              value=total_contributions_per_player["Lionel Messi"])
-with metric_col2:
-    st.metric(label="Lionel Messi Contributions/Game", 
-              value=contributions_per_player_ratio["Lionel Messi"])
-with metric_col3:
-    availibility_ratio_messi=availability_per_player_ratio["Lionel Messi"]
-    st.metric(label="Lionel Messi Match Availability", 
-              value=f"{availibility_ratio_messi}%")
 
+availibility_ratio_messi=availability_per_player_ratio["Lionel Messi"]
+metric_col1, metric_col2, metric_col3=st.columns(3)
+tile1=metric_col1.container(height=tile_height)
+tile2=metric_col2.container(height=tile_height)
+tile3=metric_col3.container(height=tile_height)
+tile1.metric(label="Lionel Messi Contributions", value=total_contributions_per_player["Lionel Messi"])
+tile2.metric(label="Lionel Messi Contributions/Game", value=contributions_per_player_ratio["Lionel Messi"])
+tile3.metric(label="Lionel Messi Match Availability", value=f"{availibility_ratio_messi}%")
+
+availibility_ratio_cr7=availability_per_player_ratio["Cristiano Ronaldo"]
 metric_col4, metric_col5, metric_col6=st.columns(3)
-with metric_col4:
-    st.metric(label="Cristiano Ronaldo Contributions", 
-              value=total_contributions_per_player["Cristiano Ronaldo"])
-with metric_col5:
-    st.metric(label="Cristiano Ronaldo Contributions/Game", 
-              value=contributions_per_player_ratio["Cristiano Ronaldo"])
-with metric_col6:
-    availibility_ratio_cr7=availability_per_player_ratio["Cristiano Ronaldo"]
-    st.metric(label="Cristiano Ronaldo Match Availability", 
-              value=f"{availibility_ratio_cr7}%")
+tile4=metric_col4.container(height=tile_height)
+tile5=metric_col5.container(height=tile_height)
+tile6=metric_col6.container(height=tile_height)
+tile4.metric(label="Cristiano Ronaldo Contributions", value=total_contributions_per_player["Cristiano Ronaldo"])
+tile5.metric(label="Cristiano Ronaldo Contributions/Game", value=contributions_per_player_ratio["Cristiano Ronaldo"])
+tile6.metric(label="Cristiano Ronaldo Match Availability", value=f"{availibility_ratio_cr7}%")
 
 contributions_per_game_ratio_options=consistency_analytics.contributions_per_game_and_contribution_per_game_ratio(df=consistency_df_filtered)
 st_echarts(options=contributions_per_game_ratio_options)

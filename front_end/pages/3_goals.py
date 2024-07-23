@@ -32,22 +32,21 @@ filtered_goals_scored_df=sql_queries.filtered_sql_query_builder(messi_teams_filt
                                                                 start_date=start_date, 
                                                                 end_date=end_date)
 
-# Page Graph Outputs
-metric_col1, metric_col2, metric_col3, metric_col4=st.columns(4)
+# Page Graph Outputs    
+tile_height=110
+
 goals_scored_metrics=goals_scored_analytics.goals_scored_metric_value(df=filtered_goals_scored_df)
 goals_per_game_metric=goals_scored_analytics.goals_ratio_metric_value(df=filtered_goals_scored_df)
-with metric_col1:
-    st.metric(label="Lionel Messi Goals Scored", 
-              value=goals_scored_metrics["Lionel Messi"])
-with metric_col2:
-    st.metric(label="Lionel Messi Goals Per Game", 
-              value=goals_per_game_metric["Lionel Messi"])
-with metric_col3:
-    st.metric(label="Cristiano Ronaldo Goals Scored", 
-              value=goals_scored_metrics["Cristiano Ronaldo"])
-with metric_col4:
-    st.metric(label="Cristiano Ronaldo Goals Per Game", 
-              value=goals_per_game_metric["Cristiano Ronaldo"])
+
+metric_col1, metric_col2, metric_col3, metric_col4=st.columns(4)
+tile1=metric_col1.container(height=tile_height)
+tile2=metric_col2.container(height=tile_height)
+tile3=metric_col3.container(height=tile_height)
+tile4=metric_col4.container(height=tile_height)
+tile1.metric(label="Lionel Messi Goals Scored", value=goals_scored_metrics["Lionel Messi"])
+tile2.metric(label="Lionel Messi Goals Per Game", value=goals_per_game_metric["Lionel Messi"])
+tile3.metric(label="Cristiano Ronaldo Goals Scored", value=goals_scored_metrics["Cristiano Ronaldo"])
+tile4.metric(label="Cristiano Ronaldo Goals Per Game", value=goals_per_game_metric["Cristiano Ronaldo"])
 
 graph_col1, graph_col2=st.columns(2)
 cummulative_goals_graph_options=goals_scored_analytics.cummulative_goals_scored(df=filtered_goals_scored_df)
