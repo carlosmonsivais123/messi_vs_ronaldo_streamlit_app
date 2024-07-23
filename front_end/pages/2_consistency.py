@@ -67,3 +67,6 @@ with graph_col1:
     st_echarts(options=minutes_played_per_year_options)
 with graph_col2:
     st_echarts(options=games_per_year_ratio)
+
+
+#### Add volatility score to contributions for consistency --> Standard Deviation
